@@ -147,7 +147,6 @@ $RECYCLE.BIN/
 *~
 
 # Docker
-Dockerfile
 docker-compose.yml
 docker-compose.override.yml
 .dockerignore
