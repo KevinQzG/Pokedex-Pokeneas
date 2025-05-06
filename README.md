@@ -17,128 +17,119 @@ This project was developed in pairs for Workshop 02 using **Node.js with Express
 - Skill
 - Image (hosted on public Amazon S3 bucket)
 - Philosophical phrase
+- Rarity level
+
+The frontend is built directly using **EJS templates** with **Tailwind CSS**, ensuring a stylized and lightweight user interface, without requiring React or separate frontend tooling.
 
 ---
 
 ## 🚀 Features
 
-The system exposes two main routes:
+The system exposes three main routes:
 
-1. **`/pokenea-json`** → Returns a JSON with:
-   - ID, name, height, and skill of a random Pokenea
-   - The container ID where the application is running
+1. **`/`** → Displays all Pokeneas with:
+   - Tailwind-styled cards
+   - Philosophical phrase
+   - Rarity label and container ID
 
-2. **`/pokenea-img`** → Displays:
-   - The image of a random Pokenea
-   - Its philosophical phrase
-   - The container ID
+2. **`/pokenea-json`** → Returns a JSON with:
+   - Random Pokenea's ID, name, height, skill
+   - Container ID
+
+3. **`/pokenea-img`** → Displays a single Pokenea (random) with:
+   - Image, phrase, and container ID
 
 ---
 
 ## ⚙️ Tech Stack
 
 - Node.js + Express
+- EJS (Embedded JavaScript templates)
+- Tailwind CSS
 - Docker + Docker Swarm
 - AWS EC2 (1 leader node + 3 manager nodes)
-- GitHub Actions for CI/CD
+- GitHub Actions (for CI/CD)
 - DockerHub
-- Amazon S3 (for Pokenea images)
-
----
-
-## 🐳 Deployment on Docker Swarm
-
-The service is deployed across multiple AWS EC2 instances using Docker Swarm with **10 replicas**, each capable of handling requests and displaying different container IDs.
-
----
-
-## 🌐 Application Access
-
-- **Student 1 IP**: _________________________
-- **Student 2 IP**: _________________________
-
----
-
-## ✅ Verification
-
-- Confirm both routes respond correctly with varying container IDs.
-- Screenshots of:
-  - EC2 console showing the 10 replicas
-  - S3 bucket with uploaded images
-  - App running with different Pokenea and container IDs
+- Amazon S3 (public image hosting)
 
 ---
 
 ## 📁 Project Structure
 
-- `backend/`: Contains the Express server.
-  - `src/index.js`: Main entry point.
-  - `src/routes/`: API endpoints.
-- `frontend/`: Contains the React app (optional UI).
-  - `src/App.jsx`: Main component.
-  - `src/index.js`: App entry point.
-  - `src/index.css`: Tailwind CSS config.
-
----
-
-## 🛠️ Prerequisites
-
-- **Node.js**: Version 18+ → [nodejs.org](https://nodejs.org/)
-- **npm**: Included with Node.js
-- **Docker**: Installed and running locally
-- **AWS CLI** (optional for EC2 setup)
+```
+pokenea-app/
+├── public/
+│   ├── favicon.png         ← App icon
+├── src/
+│   ├── routes/
+│   │   └── server.js       ← API routes and views logic
+│   ├── views/
+│   │   └── index.ejs       ← Main EJS view for Pokeneas
+├── .env
+├── package.json
+├── tailwind.config.js
+```
 
 ---
 
 ## 🧪 Running the App Locally
 
-### Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/kevinqzg/Pokedex-Pokeneas.git
-cd Pokedex-Pokeneas
+cd Pokedex-Pokeneas/pokenea-app
 ```
 
-### Backend Setup
+### 2. Install Dependencies
 
 ```bash
-cd backend
 npm install
+```
+
+### 3. Run the App
+
+```bash
 npm run dev
 ```
 
-Runs on `http://localhost:5000`.
-
-### Frontend Setup (Optional UI)
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-Runs on `http://localhost:3000`.
+Runs on: `http://localhost:5005`
 
 ---
 
-## 📜 Available Scripts (Frontend)
+## 🐳 Docker Swarm Deployment
 
-Inside `frontend/` you can run:
+Deployed across 4 EC2 instances:
+- 1 Leader node (`docker swarm init`)
+- 3 Manager nodes (joined via `docker swarm join`)
+- 10 replicas of the app using:
 
-- `npm start`: Launch the app in dev mode.
-- `npm test`: Run test runner in watch mode.
-- `npm run build`: Create production build.
-- `npm run eject`: Remove CRA abstraction (irreversible).
+```bash
+docker service create --replicas 10 --name pokeneas-app -p 80:5005 your-dockerhub-username/pokeneas-app
+```
 
-## 📜 Available Scripts (Backend)
-Inside `backend/` you can run:
-- `npm start`: Launch the server.
-- `npm run dev`: Launch the server with nodemon for development.
-- `npm test`: Run tests.
-- `npm run lint`: Run ESLint for code quality checks.
+---
+
+## 🌐 Application Access
+
+- **Student 1 IP**: `_________________________`
+- **Student 2 IP**: `_________________________`
+
+---
+
+## ✅ Verification
+
+- [x] `/` shows all Pokeneas in cards with container ID
+- [x] `/pokenea-img` renders one Pokenea in full card view
+- [x] `/pokenea-json` returns random Pokenea in JSON
+- [ ] Container ID changes with different replicas
+
 ---
 
 ## 📚 Learn More
 
-- [Create React App Documentation](https://facebook.github.io/create-react-app/docs/getting-started)
-- [React Documentation](https://reactjs.org/)
+- [Express](https://expressjs.com/)
+- [EJS](https://ejs.co/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Docker Swarm Setup](https://docs.docker.com/engine/swarm/)
+- [Amazon EC2](https://aws.amazon.com/ec2/)
