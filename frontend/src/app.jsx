@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 
 const pokemons = [
   { id: 25, name: 'Pikachu', type: 'Eléctrico' },
@@ -15,6 +16,64 @@ const pokemons = [
   { id: 448, name: 'Lucario', type: 'Lucha/Acero' },
   { id: 658, name: 'Greninja', type: 'Agua/Siniestro' },
 ];
+
+const TiltCard = ({ pokemon }: { pokemon: typeof pokemons[0] }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-50, 50], [15, -15]);
+  const rotateY = useTransform(x, [-50, 50], [-15, 15]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set(e.clientX - rect.left - rect.width / 2);
+    y.set(e.clientY - rect.top - rect.height / 2);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY }}
+      className="bg-white border-4 border-[#2A75BB] rounded-[1rem] p-4 shadow-xl text-center flex flex-col items-center transform transition-all duration-300 hover:brightness-105"
+      role="article"
+      aria-label={`${pokemon.name} card`}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
+      {/* Nombre */}
+      <div className="bg-[#FFCB05] w-full text-[#1A1A1A] font-bold text-lg py-1 px-3 rounded-t-md shadow-inner mb-3 border-b-2 border-[#CC0000]">
+        {pokemon.name}
+      </div>
+
+      {/* Imagen */}
+      <img
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
+        alt={pokemon.name}
+        className="w-32 h-32 object-contain mb-4"
+        loading="lazy"
+      />
+
+      {/* Tipo */}
+      <div className="text-sm font-semibold bg-[#2A75BB] text-white py-1 px-3 rounded-full mb-4 shadow-md">
+        Tipo: {pokemon.type}
+      </div>
+
+      {/* Acción */}
+      <button
+        className="mt-auto py-2 px-4 w-full bg-gradient-to-r from-[#FFCB05] via-[#CC0000] to-[#2A75BB] text-white font-bold rounded-full text-sm shadow-md hover:scale-105 transition transform"
+        aria-label={`Ver detalles de ${pokemon.name}`}
+      >
+        ⚔️ Ver Detalles
+      </button>
+    </motion.div>
+  );
+};
 
 const App = () => {
   const [message, setMessage] = useState('');
@@ -71,29 +130,9 @@ const App = () => {
         <p className="text-center mb-4 text-[#2A75BB] text-sm sm:text-base">
           {message || 'Conectando con el servidor...'}
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {pokemons.map(pokemon => (
-            <div 
-              key={pokemon.id}
-              className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center text-center min-h-[280px] border border-[#2A75BB] hover:ring-4 hover:ring-[#CC0000]/50 transition-all duration-300"
-              role="article"
-              aria-label={`${pokemon.name} card`}
-            >
-              <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
-                alt={pokemon.name}
-                className="w-24 h-24 sm:w-28 sm:h-28 mb-2 object-contain"
-                loading="lazy"
-              />
-              <h3 className="text-lg sm:text-xl font-bold text-[#1A1A1A]">{pokemon.name}</h3>
-              <p className="text-sm sm:text-base mb-3 text-[#2A75BB]">Tipo: {pokemon.type}</p>
-              <button 
-                className="mt-auto w-full py-2 px-3 bg-gradient-to-r from-[#FFCB05] via-[#CC0000] to-[#2A75BB] text-white font-bold rounded-full text-sm hover:scale-105 transition transform shadow-md"
-                aria-label={`Ver detalles de ${pokemon.name}`}
-              >
-                🔍 Ver Detalles
-              </button>
-            </div>
+            <TiltCard key={pokemon.id} pokemon={pokemon} />
           ))}
         </div>
       </main>
