@@ -66,7 +66,7 @@ const App = () => {
       {/* Main Content */}
       <main className="container mx-auto p-4 sm:p-6 flex-grow">
         <h2 className="text-2xl sm:text-3xl text-center mb-6 text-[#2A75BB] drop-shadow-md animate-pulse">
-          ¡Bienvenido, Entrenador!
+          ¡Bienvenido, Entrenaneas!
         </h2>
         <p className="text-center mb-4 text-[#2A75BB] text-sm sm:text-base">
           {message || 'Conectando con el servidor...'}
@@ -75,23 +75,23 @@ const App = () => {
           {pokemons.map(pokemon => (
             <div 
               key={pokemon.id}
-              className="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center min-h-[300px] hover:shadow-[0_0_12px_rgba(204,0,0,0.5)] transition-all duration-300"
+              className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center text-center min-h-[280px] border border-[#2A75BB] hover:ring-4 hover:ring-[#CC0000]/50 transition-all duration-300"
               role="article"
               aria-label={`${pokemon.name} card`}
             >
               <img
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
                 alt={pokemon.name}
-                className="w-24 h-24 sm:w-28 sm:h-28 mb-3 object-contain pixelated"
+                className="w-24 h-24 sm:w-28 sm:h-28 mb-2 object-contain"
                 loading="lazy"
               />
-              <h3 className="text-base sm:text-lg font-bold mb-1">{pokemon.name}</h3>
-              <p className="text-sm sm:text-base mb-4">Tipo: {pokemon.type}</p>
+              <h3 className="text-lg sm:text-xl font-bold text-[#1A1A1A]">{pokemon.name}</h3>
+              <p className="text-sm sm:text-base mb-3 text-[#2A75BB]">Tipo: {pokemon.type}</p>
               <button 
-                className="mt-auto w-full bg-[#CC0000] text-white py-2 rounded-full hover:bg-red-700 transition transform hover:scale-105 text-xs sm:text-sm font-bold"
+                className="mt-auto w-full py-2 px-3 bg-gradient-to-r from-[#FFCB05] via-[#CC0000] to-[#2A75BB] text-white font-bold rounded-full text-sm hover:scale-105 transition transform shadow-md"
                 aria-label={`Ver detalles de ${pokemon.name}`}
               >
-                • Ver Detalles
+                🔍 Ver Detalles
               </button>
             </div>
           ))}
