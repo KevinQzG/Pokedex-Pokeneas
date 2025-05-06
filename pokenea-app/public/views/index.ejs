@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pokeneas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+      body {
+        font-family: 'Press Start 2P', system-ui;
+      }
+    </style>
+  </head>
+
+  <body class="flex flex-col min-h-screen bg-gradient-to-br from-[#F5F5F5] via-white to-[#ECF6FF] text-[#1A1A1A]">
+    <nav class="bg-gradient-to-r from-[#2A75BB] to-[#003A70] p-4 shadow-md sticky top-0 z-50 border-b-4 border-[#FFCB05]">
+      <div class="container mx-auto flex justify-center items-center space-x-3">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Pokeball" class="w-20 h-20 drop-shadow" />
+        <h1 class="text-2xl sm:text-3xl text-white drop-shadow-md tracking-wide">Pokeneas</h1>
+      </div>
+    </nav>
+
+    <main class="container mx-auto p-6 flex-grow">
+      <h2 class="text-2xl sm:text-3xl text-center mb-6 text-[#2A75BB] drop-shadow-md animate-pulse">
+        ¡Bienvenido, Maestro Pokenea!
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <% pokeneas.forEach(p => { %>
+          <div class="group relative overflow-hidden bg-white rounded-xl shadow-2xl text-center flex flex-col items-center p-4 min-h-[480px] transition-all duration-100 ease-in-out hover:scale-105 hover:shadow-[0_0_25px_rgba(255,203,5,0.4)] w-full">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-[#FFCB05]/20 to-[#2A75BB]/10 animate-pulse rounded-xl z-0 blur-[1px] transition-all duration-100 group-hover:blur-sm"></div>
+
+            <div class="absolute top-2 left-2 px-2 py-1 rounded text-[10px] font-bold z-20 shadow
+              <% if (p.rareza === 'legendary') { %> bg-yellow-400 text-yellow-900
+              <% } else if (p.rareza === 'powerful') { %> bg-red-500 text-white
+              <% } else if (p.rareza === 'classic') { %> bg-blue-500 text-white
+              <% } else { %> bg-gray-300 text-black <% } %>">
+              <% if (p.rareza === 'legendary') { %> Legendario
+              <% } else if (p.rareza === 'powerful') { %> Poderoso
+              <% } else if (p.rareza === 'classic') { %> Clásico
+              <% } else { %> Normal <% } %>
+            </div>
+
+            <div class="z-10 w-full flex flex-col items-center justify-between h-full">
+              <img src="<%= p.imagen %>" alt="<%= p.nombre %>" class="w-52 h-52 object-contain mx-auto mb-2 transition-transform duration-100 group-hover:scale-110" loading="lazy" />
+              <div>
+                <h3 class="text-base font-extrabold text-[#2A75BB] mb-1"><%= p.nombre %></h3>
+                <p class="text-xs text-[#2A75BB] font-semibold">ID: <%= p.id %></p>
+                <p class="text-xs text-[#2A75BB] font-semibold">Tipo: <%= p.tipo %></p>
+                <p class="text-xs text-[#CC0000] font-bold">Altura: <%= p.altura %> m</p>
+                <p class="text-xs text-[#1A1A1A] font-semibold">Habilidad: <%= p.habilidad %></p>
+              </div>
+              <div class="mt-2 px-3">
+                <p class="text-[10px] italic text-[#555] leading-tight">"<%= p.frase %>"</p>
+              </div>
+              <div class="mt-4 text-[10px] bg-[#2A75BB] text-white py-1 px-2 rounded">
+                Container ID: <%= containerId %>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </main>
+
+    <footer class="bg-[#2A75BB] text-white text-center py-4 mt-auto">
+      <p class="text-xs sm:text-sm">© 2025 Pokeneas. ¡Hazte con todas las pokeneas de la zona!</p>
+    </footer>
+  </body>
+</html>
