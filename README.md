@@ -1,4 +1,4 @@
-# 🧪 Workshop 02 - Pokenea Pokedex
+# 🧪 Workshop 02 - Pokeneas Pokedex
 
 This project was developed in pairs for Workshop 02 using **Node.js with Express**, **Docker**, and **AWS EC2**.
 
