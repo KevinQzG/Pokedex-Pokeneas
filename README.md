@@ -95,8 +95,8 @@ The service is deployed across multiple AWS EC2 instances using Docker Swarm wit
 ### Clone the repository
 
 ```bash
-git clone https://github.com/kevinqzg/pokenea-pokedex.git
-cd pokenea-pokedex
+git clone https://github.com/kevinqzg/Pokedex-Pokeneas.git
+cd Pokedex-Pokeneas
 ```
 
 ### Backend Setup
