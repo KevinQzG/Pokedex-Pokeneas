@@ -116,7 +116,7 @@ const pokeneas = [
   {
     id: 493,
     nombre: 'Arceus',
-    tipo: 'Normal (Dios Pokémon)',
+    tipo: 'Dios Pokémon',
     altura: 3.2,
     habilidad: 'Multitipo',
     imagen: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/493.png',
