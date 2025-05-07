@@ -3,6 +3,7 @@
 This project was developed in pairs for Workshop 02 using **Node.js with Express**, **Docker**, and **AWS EC2**.
 
 ## 👥 Participants
+
 - Kevin Quiroz ([GitHub](https://github.com/KevinQzG))
 - Juan Felipe Restrepo ([GitHub](https://github.com/JuanFelipeRestrepoBuitrago))
 
@@ -11,6 +12,7 @@ This project was developed in pairs for Workshop 02 using **Node.js with Express
 ## 📦 Project Description
 
 **Pokenea** is a custom Pokedex inspired by Antioquian culture. Each Pokenea entry includes:
+
 - ID
 - Name
 - Height
@@ -100,6 +102,7 @@ Runs on: `http://localhost:5005`
 ## 🐳 Docker Swarm Deployment
 
 Deployed across 4 EC2 instances:
+
 - 1 Leader node (`docker swarm init`)
 - 3 Manager nodes (joined via `docker swarm join`)
 - 10 replicas of the app using:
@@ -135,11 +138,12 @@ docker service create --replicas 10 --name pokeneas-app -p 80:5005 your-dockerhu
 - [Amazon EC2](https://aws.amazon.com/ec2/)
 
 ## 📸 Screenshots
+
 <img width="1505" alt="image" src="https://github.com/user-attachments/assets/551d70c3-fca6-48b4-932d-8cffb7155104" />
 <img width="1511" alt="image" src="https://github.com/user-attachments/assets/9bd9fbd5-79a3-4212-a1f5-33d541b31bee" />
 
 ## 🛜 Website
-- https://pokedex-pokeneas.onrender.com/
-- https://pokedex-pokeneas.onrender.com/pokenea-img
-- https://pokedex-pokeneas.onrender.com/pokenea-json
 
+- <https://pokedex-pokeneas.onrender.com/>
+- <https://pokedex-pokeneas.onrender.com/pokenea-img>
+- <https://pokedex-pokeneas.onrender.com/pokenea-json>
