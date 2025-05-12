@@ -220,10 +220,47 @@ To have a static IP address for the application, you need to set a static IP add
 7. Click "Associate" to link the Elastic IP to your instance.
 8. Now, you can access the application using the Elastic IP address.
 
-- **Student 1 IP**: `_________________________`
-- **Student 2 IP**: `_________________________`
+- **Student 1 IP**: [52.6.101.232](http://52.6.101.232)
+- **Student 2 IP**: [34.225.235.86](http://34.225.235.86)
 
 ---
+
+## Deliverables
+
+### Students Ip Addresses
+
+- **Pipe's IP**: [52.6.101.232](http://52.6.101.232)
+- **Kevin's IP**: [34.225.235.86](http://34.225.235.86)
+
+### Replicas Images
+
+#### Pipe's Replicas
+
+![Pipe's Replicas Image](./img/pipe-replicas.png)
+
+#### Kevin's Replicas
+![Kevin's Replicas Image](./img/kevin-replicas.jpeg)
+
+### Bucket S3 Images
+
+### Pipe's Bucket S3 Images
+
+![Pipe's Bucket S3 Images](./img/pipe-bucket.png)
+
+### Kevin's Bucket S3 Images
+
+![Kevin's Bucket S3 Images](./img/kevin-bucket.jpeg)
+
+### Docker App in Random Image
+
+#### Pipe's App
+
+![Pipe's App](./img/pipe-app-1.png)
+![Pipe's App](./img/pipe-app-2.png)
+
+#### Kevin's App
+![Kevin's App](./img/kevin-app-1.jpeg)
+![Kevin's App](./img/kevin-app-2.jpeg)
 
 ## ✅ Verification
 
