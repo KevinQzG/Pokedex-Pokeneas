@@ -1,0 +1,13 @@
+services:
+  pokeneas:
+    image: ghcr.io/kevinqzg/pokedex-pokeneas/taller2-teis:latest
+    container_name: pokeneas_app
+    deploy:
+      replicas: 10
+      restart_policy:
+        condition: on-failure
+    env_file:
+      - .env
+    ports:
+      - "80:5000"
+
