@@ -124,6 +124,7 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+.vscode
 
 # yarn v2
 .yarn/cache
@@ -145,8 +146,3 @@ $RECYCLE.BIN/
 
 # Linux
 *~
-
-# Docker
-docker-compose.yml
-docker-compose.override.yml
-.dockerignore
