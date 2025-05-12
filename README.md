@@ -2,6 +2,22 @@
 
 This project was developed in pairs for Workshop 02 using **Node.js with Express**, **Docker**, and **AWS EC2**.
 
+## Content Table
+- [Participants](#-participants)
+- [Project Description](#-project-description)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Running the App Locally](#-running-the-app-locally)
+- [Docker Swarm Deployment](#-docker-swarm-deployment)
+- [Application Access](#-application-access)
+- [Deliverables](#deliverables)
+- [Verification](#-verification)
+- [Learn More](#-learn-more)
+- [Screenshots](#-screenshots)
+- [Website](#-website)
+
+
 ## 👥 Participants
 
 - Kevin Quiroz ([GitHub](https://github.com/KevinQzG))
