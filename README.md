@@ -283,7 +283,7 @@ To have a static IP address for the application, you need to set a static IP add
 - [x] `/` shows all Pokeneas in cards with container ID
 - [x] `/pokenea-img` renders one Pokenea in full card view
 - [x] `/pokenea-json` returns random Pokenea in JSON
-- [ ] Container ID changes with different replicas
+- [x] Container ID changes with different replicas
 
 ---
 
